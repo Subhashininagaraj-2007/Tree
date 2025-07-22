@@ -1,0 +1,18 @@
+class Solution {
+   ArrayList<Integer> list= new ArrayList();
+   void inOrderTraversal(Node node)
+   {
+       if(node==null)
+       {
+           return;
+       }
+       inOrderTraversal(node.left);
+       list.add(node.data);
+       inOrderTraversal(node.right);
+       
+   }
+    ArrayList<Integer> inOrder(Node root) {
+      inOrderTraversal(root);
+      return list;
+    }
+}
