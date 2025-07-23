@@ -1,0 +1,18 @@
+class Solution {
+    ArrayList<Integer> list=new ArrayList<>();
+    void postorder(Node node)
+    {
+        if(node==null)
+        {
+            return ;
+        }
+        postorder(node.left);
+        postorder(node.right);
+        list.add(node.data);
+    }
+    
+    ArrayList<Integer> postOrder(Node root) {
+        postorder(root);
+        return list;
+    }
+}
