@@ -1,0 +1,20 @@
+class Solution {
+    static void Traversal(Node node,ArrayList<Integer>list)
+    {
+        if(node==null)
+        {
+            return;
+        }
+        list.add(node.data);
+        Traversal(node.left,list);
+        Traversal(node.right,list);
+        
+        
+    }
+    static ArrayList<Integer> preorder(Node root) {
+        // write code here
+        ArrayList <Integer> list=new ArrayList<>();
+        Traversal(root,list);
+        return list;
+    }
+}
