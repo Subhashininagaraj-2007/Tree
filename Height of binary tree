@@ -1,0 +1,11 @@
+class Solution {
+    int height(Node node) {
+        if(node==null)
+        {
+            return -1;
+        }
+        int lefth=height(node.left);
+        int righth=height(node.right);
+        return 1+Math. max(lefth,righth);
+    }
+}
