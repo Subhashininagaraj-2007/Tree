@@ -1,0 +1,29 @@
+class Tree {
+    ArrayList<Integer> noSibling(Node node) {
+        // code here
+         ArrayList<Integer> result = new ArrayList<>();
+        findNoSibling(node, result);
+        if (result.isEmpty()) {
+            result.add(-1);
+        }
+        Collections.sort(result);
+        return result;
+    }
+
+    void findNoSibling(Node root, ArrayList<Integer> list) {
+        if (root == null) 
+            return;
+        if (root.left != null && root.right == null) {
+            list.add(root.left.data);
+            findNoSibling(root.left, list);
+        }
+        else if (root.right != null && root.left == null) {
+            list.add(root.right.data);
+            findNoSibling(root.right, list);
+        }
+        else {
+            findNoSibling(root.left, list);
+            findNoSibling(root.right, list);
+        }
+    }
+}
