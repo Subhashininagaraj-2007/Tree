@@ -1,0 +1,21 @@
+class Solution {
+    int leafLevel = -1;
+    boolean check(Node root) {
+        return checkLeaves(root, 0);
+    }
+    
+    boolean checkLeaves(Node node, int level) {
+        if (node == null) return true;
+    
+        if (node.left == null && node.right == null) {
+            // First leaf found
+            if (leafLevel == -1) {
+                leafLevel = level;
+            }
+            return level == leafLevel;
+        }
+        
+        
+        return checkLeaves(node.left, level + 1) && checkLeaves(node.right, level + 1);
+    }
+}
