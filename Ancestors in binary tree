@@ -1,0 +1,23 @@
+class Solution {
+    public boolean getpath(Node root,int target,ArrayList<Integer>result)
+    {
+        if(root==null)
+        return false;
+        if(root.data==target)
+        return true;
+    result.add(root.data);
+    boolean left=getpath(root.left,target,result);
+     boolean right=getpath(root.right,target,result);
+     if(!right&&!left){
+    result.remove(result.size()-1);
+    return false;}
+    return true;
+    }
+    
+    public ArrayList<Integer> Ancestors(Node root, int target) {
+        ArrayList<Integer> result=new ArrayList();
+        getpath(root,target,result);
+        Collections.reverse(result);
+        return result;
+    }
+}
