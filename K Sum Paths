@@ -1,0 +1,23 @@
+class Solution {
+    public int sumK(Node root, int k) {
+                Map<Integer, Integer> prefixSum = new HashMap<>();
+        prefixSum.put(0, 1); // Base case (sum=0 occurs once)
+        return dfs(root, 0, k, prefixSum);
+
+            }
+ private int dfs(Node node, int currentSum, int k, Map<Integer, Integer> prefixSum) {
+        if (node == null) return 0;
+  
+        currentSum += node.data;
+     
+        int count = prefixSum.getOrDefault(currentSum - k, 0);
+        prefixSum.put(currentSum, prefixSum.getOrDefault(currentSum, 0) + 1);
+        
+        count += dfs(node.left, currentSum, k, prefixSum);
+        count += dfs(node.right, currentSum, k, prefixSum);
+        
+        prefixSum.put(currentSum, prefixSum.get(currentSum) - 1);
+        
+        return count;
+    }
+}
