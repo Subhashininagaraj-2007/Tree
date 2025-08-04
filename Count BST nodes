@@ -1,0 +1,21 @@
+class Solution {
+  int traversal(int l, int r, Node root) {
+        if (root == null) {
+            return 0;
+        }
+
+        int count = 0;
+        if (root.data >= l && root.data <= r) {
+            count++;
+        }
+        count += traversal(l, r, root.left);
+        count += traversal(l, r, root.right);
+        
+        return count;
+    }
+    
+    int getCount(Node root, int l, int h) {
+        return traversal(l, h, root);
+        
+    }
+}
