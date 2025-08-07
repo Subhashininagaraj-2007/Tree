@@ -1,0 +1,26 @@
+class Solution {
+    // Function to find the least absolute difference between any node
+    // value of the BST and the given integer.
+    static int minDiff(Node root, int K) {
+       return findClosestValue(root, K);
+    }
+      static int findClosestValue(Node root, int target) {
+        int closest = root.data;
+        Node current = root;
+
+        while (current != null) {
+            if (Math.abs(target - current.data) < Math.abs(target - closest)) {
+                closest = current.data;
+            }
+
+            if (target < current.data) {
+                current = current.left;
+            } else if (target > current.data) {
+                current = current.right;
+            } else {
+                break; 
+            }
+        }
+        return Math.abs(target - closest);
+    }
+}
